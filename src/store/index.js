@@ -9,7 +9,7 @@ export default new Vuex.Store({
     selectedMenuName: 'Home',
     expandOnHover: true,
     miniVariant: true,
-    navigationDrawerColor: '#363636',
+    navigationDrawerColor: 'red',
     userProfile: [
       {
         icon: 'mdi-home',
