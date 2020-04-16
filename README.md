@@ -1,4 +1,4 @@
-# pradeep-tim
+# Pradeep
 
 ## Project setup
 ```
