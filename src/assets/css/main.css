@@ -3,3 +3,16 @@
 @tailwind components;
 
 @tailwind utilities;
+
+.headingTop {
+    font-size: 1.25rem;
+    font-weight: 500;
+    padding: 5%;
+    position: relative;
+    top: -30px;
+}
+.heading {
+    font-size: 1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+}

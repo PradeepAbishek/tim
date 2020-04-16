@@ -2,22 +2,39 @@
   <v-app color="#dadada">
     <NavigationDrawer />
     <v-content>
-      <v-toolbar color="tw-bg-blue-500" >
-        <v-btn fab small class="mr-3" @click="changeNavigationView" href="#">
+      <v-toolbar 
+        dark 
+        :color="navigationDrawerColor" 
+      >
+        <v-btn 
+          class="ml-3 mr-3" 
+          icon 
+          @click="changeNavigationView" 
+          href="#"
+        >
           <v-icon v-if="expandOnHover">mdi-view-quilt</v-icon>
           <v-icon v-else>mdi-dots-vertical</v-icon>
         </v-btn>
-        <div> {{ selectedMenuName }} </div>
+        <div class="heading"> {{ selectedMenuName }} </div>
         <v-spacer></v-spacer>
-        <v-btn icon>
-          <v-icon>mdi-magnify</v-icon>
-        </v-btn>
-        <v-btn icon>
-          <v-icon>mdi-heart</v-icon>
-        </v-btn>
-        <v-btn icon>
-          <v-icon>mdi-dots-vertical</v-icon>
-        </v-btn>
+        <v-menu offset-y>
+        <template v-slot:activator="{ on }">
+          <v-btn
+            v-on="on"
+            icon
+            href="#"
+          >
+            <v-icon>mdi-cached mdi-spin</v-icon>
+          </v-btn>
+        </template>
+        <v-color-picker
+          v-model="color"
+          hide-canvas 
+          hide-inputs 
+          show-swatches
+          class="mx-auto"
+        ></v-color-picker>
+      </v-menu>
       </v-toolbar>
       <router-view></router-view>
     </v-content>
@@ -47,6 +64,14 @@ export default {
     miniVariant() {
       return this.$store.state.miniVariant;
     },
+    color: {
+      get() {
+        return this.$store.state.navigationDrawerColor;
+      },
+      set(value) {
+        this.$store.state.navigationDrawerColor = value;   
+      }
+    }
   },
   methods: {
     changeNavigationView() {

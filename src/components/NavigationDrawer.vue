@@ -2,12 +2,12 @@
     <v-navigation-drawer permanent clipped app
       :expand-on-hover="expandOnHover"
       :mini-variant="miniVariant"
-      color="tw-bg-blue-500"
+      :color="navigationDrawerColor"
     >
         <v-list dark nav>
-            <v-list-item-group color="black" v-model="selectedMenu" mandatory>
+            <v-list-item-group :color="listColor" v-model="selectedMenu" mandatory>
                 <v-list-item
-                    v-for="(item, i) in userProfile"
+                    v-for="(item, i) in menuLists"
                     :key="i"
                     @click="changeSelectedMenuName(item.text)"
                     :to="item.path"
@@ -16,7 +16,7 @@
                         <v-icon> {{ item.icon }}</v-icon>
                     </v-list-item-icon>
                     <v-list-item-content>
-                        <v-list-item-title> {{ item.text }} </v-list-item-title>
+                        <v-list-item-title class="heading"> {{ item.text }} </v-list-item-title>
                     </v-list-item-content>
                 </v-list-item>
                 <v-divider class="tw-bg-white"></v-divider>
@@ -45,8 +45,8 @@ export default {
         navigationDrawerColor() {
             return this.$store.state.navigationDrawerColor;
         },
-        userProfile() {
-            return this.$store.state.userProfile;
+        menuLists() {
+            return this.$store.state.menuLists;
         },
         expandOnHover() {
             return this.$store.state.expandOnHover;
@@ -54,6 +54,9 @@ export default {
         miniVariant() {
             return this.$store.state.miniVariant;
         },
+        listColor() {
+            return this.$store.state.listColor;
+        }
     },
     methods: {
         changeSelectedMenuName(newMenuName) {

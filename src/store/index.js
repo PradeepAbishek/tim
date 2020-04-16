@@ -9,12 +9,20 @@ export default new Vuex.Store({
     selectedMenuName: 'Home',
     expandOnHover: true,
     miniVariant: true,
-    navigationDrawerColor: 'red',
-    userProfile: [
-      {
-        icon: 'mdi-home',
+    navigationDrawerColor: '#512DA8FF',
+    listColor: 'white',
+    menuLists: [
+      { icon: 'mdi-home',
         text: 'Home',
         path: '/',
+      },
+      { icon: 'mdi-login-variant',
+        text: 'Login Page',
+        path: '/loginPage',
+      },
+      { icon: 'mdi-account-plus',
+        text: 'Signup Page',
+        path: '/signupPage',
       },
       {
         icon: 'mdi-account',
