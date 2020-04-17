@@ -97,8 +97,5 @@ export default {
         ],
 
     }),
-    mounted() {
-        this.$store.state.selectedMenuName = "Dashboard";
-    }
 }
 </script>

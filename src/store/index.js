@@ -6,11 +6,11 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     selectedMenu: 0,
-    selectedMenuName: 'Home',
     expandOnHover: true,
     miniVariant: true,
-    navigationDrawerColor: '#512DA8FF',
+    headerColor: '#512DA8FF',
     listColor: 'white',
+    showLoader: false,
     menuLists: [
       { icon: 'mdi-home',
         text: 'Home',
@@ -37,12 +37,12 @@ export default new Vuex.Store({
       {
         icon: 'mdi-bluetooth',
         text: 'Bluetooth',
-        path: 'unauthorized',
+        path: 'bluetooth',
       },
       {
         icon: 'mdi-chart-donut',
         text: 'Data Usage',
-        path: 'h',
+        path: 'dataUsage',
       },
     ]
   },
