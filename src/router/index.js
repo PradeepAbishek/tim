@@ -19,12 +19,27 @@ Vue.use(VueRouter)
     component: LoginPage,
   },
   {
+    path: '/signupPage',
+    name: 'Signup Page',
+    component: LoginPage,
+  },
+  {
+    path: '/myProfile',
+    name: 'My Profile',
+    component: LoginPage,
+  },
+  {
     path: '/dashboard',
     name: 'Dashboard',
     component: Dashboard,
   },
   {
-    path:'/unauthorized',
+    path: '/bluetooth',
+    name: 'Bluetooth',
+    component: LoginPage,
+  },
+  {
+    path:'/dataUsage',
     name: '404',
     component: ErrorPage,
   }

@@ -4,7 +4,7 @@
     <v-content>
       <v-toolbar 
         dark 
-        :color="navigationDrawerColor" 
+        :color="headerColor" 
       >
         <v-btn 
           class="ml-3 mr-3" 
@@ -15,7 +15,7 @@
           <v-icon v-if="expandOnHover">mdi-view-quilt</v-icon>
           <v-icon v-else>mdi-dots-vertical</v-icon>
         </v-btn>
-        <div class="heading"> {{ selectedMenuName }} </div>
+        <div class="heading"> {{ currentRouteName }} </div>
         <v-spacer></v-spacer>
         <v-menu offset-y>
         <template v-slot:activator="{ on }">
@@ -24,7 +24,7 @@
             icon
             href="#"
           >
-            <v-icon>mdi-cached mdi-spin</v-icon>
+            <v-icon>mdi-refresh mdi-spin</v-icon>
           </v-btn>
         </template>
         <v-color-picker
@@ -36,27 +36,27 @@
         ></v-color-picker>
       </v-menu>
       </v-toolbar>
-      <router-view></router-view>
+      <Loader />
+      <router-view :class='showLoader ? "tw-hidden" : ""'></router-view>
     </v-content>
   </v-app>
 </template>
 <script>
 import NavigationDrawer from '@/components/NavigationDrawer'
+import Loader from '@/components/Loader'
 
 export default {
   name: 'App',
   components: {
     NavigationDrawer,
+    Loader,
   },
   data: () => ({
     
   }),
   computed: {
-    navigationDrawerColor() {
-      return this.$store.state.navigationDrawerColor;
-    },
-    selectedMenuName() {
-      return this.$store.state.selectedMenuName;
+    headerColor() {
+      return this.$store.state.headerColor;
     },
     expandOnHover() {
       return this.$store.state.expandOnHover;
@@ -66,11 +66,22 @@ export default {
     },
     color: {
       get() {
-        return this.$store.state.navigationDrawerColor;
+        return this.$store.state.headerColor;
       },
       set(value) {
-        this.$store.state.navigationDrawerColor = value;   
+        this.$store.state.headerColor = value;   
       }
+    },
+    showLoader: {
+      get() {
+        return this.$store.state.showLoader;
+      },
+      set() {
+        this.$store.state.showLoader = !this.$store.state.showLoader;   
+      }
+    },
+    currentRouteName() {
+      return this.$route.name;
     }
   },
   methods: {

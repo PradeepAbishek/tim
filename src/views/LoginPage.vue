@@ -9,7 +9,7 @@
                 dark
                 elevation="10  "  
                 class="tw-text-center headingTop tw-uppercase"
-                :color="navigationDrawerColor"
+                :color="headerColor"
             >
                 Login
             </v-sheet>         
@@ -20,17 +20,17 @@
                     <v-text-field 
                         label="User Name" 
                         prepend-icon="mdi-account-circle"
-                        :color="navigationDrawerColor"
+                        :color="headerColor"
                     >
                     </v-text-field>
                     
                     <v-text-field 
                         label="Password" 
                         prepend-icon="mdi-lock"
-                        :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-                        :type="show1 ? 'text' : 'password'"
-                        @click:append="show1 = !show1"
-                        :color="navigationDrawerColor"
+                        :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
+                        :type="showPassword ? 'text' : 'password'"
+                        @click:append="showPassword = !showPassword"
+                        :color="headerColor"
                     >
                     </v-text-field>
                 </v-form>
@@ -42,11 +42,11 @@
 export default {
     name: 'LoginPage',
     data: () => ({
-        show1: false,
+        showPassword: false,
     }),
     computed: {
-        navigationDrawerColor() {
-            return this.$store.state.navigationDrawerColor;
+        headerColor() {
+            return this.$store.state.headerColor;
         }
     }
     
